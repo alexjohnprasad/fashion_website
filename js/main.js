@@ -1,21 +1,8 @@
 // Main application script
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if location is set
-    const userLocation = localStorage.getItem('userLocation');
-    const locationModal = document.getElementById('location-modal');
-    const mainContent = document.getElementById('main-content');
-
-    if (userLocation) {
-        if (locationModal) locationModal.style.display = 'none';
-        if (mainContent) mainContent.style.display = 'block';
-    } else {
-        // Show the location modal and button, do not auto-fetch
-        const autoLocationBtn = document.getElementById('auto-location-btn');
-        if (autoLocationBtn) autoLocationBtn.style.display = '';
-        const status = document.getElementById('location-fetch-status');
-        if (status) status.textContent = 'Click the button below to use your current location.';
-        if (locationModal) locationModal.style.display = 'flex';
-        if (mainContent) mainContent.style.display = 'none';
+    // Always load featured products on homepage
+    if (document.getElementById('featured-products')) {
+        loadFeaturedProducts();
     }
 
     // Initialize navigation

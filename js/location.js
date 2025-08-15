@@ -205,10 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                         body: formData.toString(),
                     });
-                    // Hide overlay and make main content fully interactive
+                    // Hide overlay and make main content fully interactive and visible
                     document.getElementById('welcome-overlay').style.display = 'none';
                     mainContent.style.pointerEvents = '';
                     mainContent.style.userSelect = '';
+                    mainContent.style.display = '';
+                    mainContent.style.opacity = '';
                 } catch (e) {
                     alert('Sorry, we could not find deals near you.');
                 }
