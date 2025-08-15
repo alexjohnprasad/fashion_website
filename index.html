@@ -9,27 +9,21 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Location Modal -->
-    <div id="location-modal" class="modal">
-        <div class="modal-content">
-            <h2>Welcome to Our Textile Shop</h2>
-            <p id="location-fetch-status">Attempting to detect your location automatically...</p>
-            <div class="location-options">
-                <button id="auto-location-btn" class="btn" style="display:none;">
-                    Use My Current Location
-                </button>
-                <p class="or-divider">OR</p>
-                <div class="manual-location">
-                    <h3>Enter Your Name</h3>
-                    <input type="text" id="name-input" placeholder="Your Name">
-                    <button id="submit-name-btn" class="btn">Send Location to Shop</button>
-                </div>
+    <!-- Welcome Overlay -->
+    <div id="welcome-overlay">
+        <div class="welcome-card">
+            <div class="welcome-icon">
+                <img src="images/banners/1d264c988391a6b743cfbd299b381170.jpg" alt="Welcome" style="width:60px;height:60px;border-radius:50%;box-shadow:0 2px 8px #0001;object-fit:cover;">
+            </div>
+            <h2 class="welcome-title">Welcome!</h2>
+            <p class="welcome-desc">Discover exclusive textile deals near you. Enter your name to get started.</p>
+            <div class="welcome-form">
+                <input type="text" id="name-input" class="welcome-input" placeholder="Your Name">
+                <button id="start-btn" class="welcome-btn">Start</button>
             </div>
         </div>
     </div>
-
-    <!-- Main Content (hidden until location is provided) -->
-    <div id="main-content" style="display: none;">
+    <div id="main-content">
         <nav>
             <div class="container nav-container">
                 <div class="logo">Textile Shop</div>
