@@ -176,6 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Only show name input and Start button, handle location and form submit on Start
     // Blur/unblur main content as needed
     const mainContent = document.getElementById('main-content');
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    // Check for greeting key
+    const greetingKey = localStorage.getItem('greetingKey');
+    if (greetingKey && welcomeOverlay) {
+        welcomeOverlay.style.display = 'none';
+        if (mainContent) {
+            mainContent.style.pointerEvents = '';
+            mainContent.style.userSelect = '';
+            mainContent.style.display = '';
+            mainContent.style.opacity = '';
+        }
+    }
     const startBtn = document.getElementById('start-btn');
     if (startBtn) {
         startBtn.addEventListener('click', async () => {
@@ -205,12 +217,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                         body: formData.toString(),
                     });
+                    // Store a key in localStorage to skip greeting next time
+                    localStorage.setItem('greetingKey', crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2));
                     // Hide overlay and make main content fully interactive and visible
-                    document.getElementById('welcome-overlay').style.display = 'none';
-                    mainContent.style.pointerEvents = '';
-                    mainContent.style.userSelect = '';
-                    mainContent.style.display = '';
-                    mainContent.style.opacity = '';
+                    if (welcomeOverlay) welcomeOverlay.style.display = 'none';
+                    if (mainContent) {
+                        mainContent.style.pointerEvents = '';
+                        mainContent.style.userSelect = '';
+                        mainContent.style.display = '';
+                        mainContent.style.opacity = '';
+                    }
                 } catch (e) {
                     alert('Sorry, we could not find deals near you.');
                 }
