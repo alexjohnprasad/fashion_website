@@ -1,0 +1,79 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Premium Textiles",
+      "address": "123 Fabric Street, Textile City",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
+      "products": [
+        {
+          "id": 101,
+          "name": "Silk Saree",
+          "price": 2499,
+          "category": "saree",
+          "description": "Pure silk saree with golden border",
+          "image": "IMG-20250815-WA0080.jpg"
+        },
+        {
+          "id": 102,
+          "name": "Cotton Kurta",
+          "price": 899,
+          "category": "dress",
+          "description": "Handwoven cotton kurta for men",
+          "image": "IMG-20250815-WA0081.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Traditional Weaves",
+      "address": "456 Handloom Avenue, Craft Town",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "products": [
+        {
+          "id": 201,
+          "name": "Woolen Shawl",
+          "price": 1299,
+          "category": "accessory",
+          "description": "Kashmiri woolen shawl with embroidery",
+          "image": "IMG-20250815-WA0082.jpg"
+        },
+        {
+          "id": 202,
+          "name": "Linen Shirt",
+          "price": 1099,
+          "category": "dress",
+          "description": "Premium linen shirt for summer",
+          "image": "IMG-20250815-WA0083.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Modern Fabrics",
+      "address": "789 Design Road, Fashion District",
+      "latitude": 12.9854,
+      "longitude": 77.5432,
+      "products": [
+        {
+          "id": 301,
+          "name": "Denim Jeans",
+          "price": 1599,
+          "category": "bottom",
+          "description": "Slim fit denim jeans",
+          "image": "IMG-20250815-WA0084.jpg"
+        },
+        {
+          "id": 302,
+          "name": "Printed Dress",
+          "price": 1799,
+          "category": "dress",
+          "description": "Floral printed summer dress",
+          "image": "IMG-20250815-WA0085.jpg"
+        }
+      ]
+    }
+  ]
+}

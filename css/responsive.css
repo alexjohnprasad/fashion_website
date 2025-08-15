@@ -1,0 +1,176 @@
+/* Mobile First Styles (default) */
+.container {
+  padding: 0 15px;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#products-grid {
+  display: block;
+}
+
+/* Homepage Components */
+.hero {
+  flex-direction: column;
+  padding: 40px 0;
+  gap: 30px;
+}
+
+.hero-image {
+  height: 250px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+}
+
+.hero-buttons {
+  flex-direction: column;
+}
+
+.categories-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.testimonial-cards {
+  grid-template-columns: 1fr;
+}
+
+.location-cta {
+  padding: 40px 0;
+}
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .btn {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  #products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Homepage Components */
+  .hero {
+    flex-direction: row;
+    padding: 60px 0;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .testimonial-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Navigation will be added in Phase 2 */
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+  #products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  table {
+    font-size: 1rem;
+  }
+
+  /* Homepage Components */
+  .categories-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+  .location-options {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .or-divider {
+    margin: 0 15px;
+  }
+
+  .address-form {
+    margin-left: 20px;
+  }
+
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product-filters {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+  .shops-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+  }
+
+  .modal-content {
+    max-width: 600px;
+  }
+}
+
+/* Large Desktop Styles (1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    padding: 0;
+  }
+
+  /* Navigation */
+  nav ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .btn {
+    transition: all 0.3s ease;
+  }
+
+  .product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+}

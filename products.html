@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Textile Shop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">Textile Shop</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart (<span id="cart-counter">0</span>)</a></li>
+            </ul>
+        </nav>
+
+        <div class="products-header">
+            <h1>Our Products</h1>
+            <div class="product-filters">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="saree">Sarees</option>
+                        <option value="dress">Dresses</option>
+                        <option value="accessory">Accessories</option>
+                        <option value="bottom">Bottoms</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="distance-filter">Max Distance (km):</label>
+                    <input type="range" id="distance-filter" min="1" max="50" value="10">
+                    <span id="distance-value">10</span>
+                </div>
+                <button id="apply-filters-btn" class="btn">Apply Filters</button>
+            </div>
+        </div>
+
+        <div class="shops-container">
+            <div id="nearby-shops" class="shops-list">
+                <!-- Nearby shops will be loaded here -->
+            </div>
+            <div id="products-grid" class="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+
+        <div id="location-error" class="error" style="display: none;"></div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/location.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:,">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textile Shop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Location Modal -->
+    <div id="location-modal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to Our Textile Shop</h2>
+            <p id="location-fetch-status">Attempting to detect your location automatically...</p>
+            <div class="location-options">
+                <button id="auto-location-btn" class="btn" style="display:none;">
+                    Use My Current Location
+                </button>
+                <p class="or-divider">OR</p>
+                <div class="manual-location">
+                    <h3>Enter Your Address</h3>
+                    <input type="text" id="address-input" placeholder="Street Address">
+                    <input type="text" id="city-input" placeholder="City">
+                    <input type="text" id="zip-input" placeholder="ZIP Code">
+                    <button id="submit-address-btn" class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (hidden until location is provided) -->
+    <div id="main-content" style="display: none;">
+        <nav>
+            <div class="container nav-container">
+                <div class="logo">Textile Shop</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart (<span id="cart-counter">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <section class="banner-section">
+                <div class="banner-container">
+                    <img src="images/banners/1d264c988391a6b743cfbd299b381170.jpg" alt="Textile Banner 1" class="banner-img">
+                    <img src="images/banners/59f13b918f2fa3d616712da001811d8b.jpg" alt="Textile Banner 2" class="banner-img">
+                </div>
+            </section>
+
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Premium Textiles At Your Fingertips</h1>
+                    <p>Discover handcrafted fabrics from local artisans near you</p>
+                    <div class="hero-buttons">
+                        <a href="products.html" class="btn btn-primary">Shop Now</a>
+                        <button id="hero-location-btn" class="btn btn-outline">Find Nearby Shops</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/banners/1d264c988391a6b743cfbd299b381170.jpg" alt="Hero Banner" style="max-width:100%;height:auto;">
+                </div>
+            </div>
+
+            <section class="shop-categories">
+                <h2>Shop By Category</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="saree">
+                        <div class="category-icon">🟥</div>
+                        <h3>Sarees</h3>
+                    </div>
+                    <div class="category-card" data-category="dress">
+                        <div class="category-icon">👗</div>
+                        <h3>Dresses</h3>
+                    </div>
+                    <div class="category-card" data-category="bottom">
+                        <div class="category-icon">👖</div>
+                        <h3>Bottoms</h3>
+                    </div>
+                    <div class="category-card" data-category="accessory">
+                        <div class="category-icon">🧣</div>
+                        <h3>Accessories</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="featured-products">
+                <h2>Featured Products</h2>
+                <div class="products-grid" id="featured-products">
+                    <!-- Featured products will be loaded from shops.json -->
+                </div>
+                <a href="products.html" class="btn view-all">View All Products →</a>
+            </section>
+
+            <section class="testimonials">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-cards">
+                    <div class="testimonial">
+                        <div class="rating">★★★★★</div>
+                        <p>"The quality of fabrics is exceptional. Found exactly what I needed!"</p>
+                        <div class="author">- Priya K.</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="rating">★★★★☆</div>
+                        <p>"Great selection of traditional textiles at reasonable prices."</p>
+                        <div class="author">- Rohan M.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="location-cta">
+                <div class="cta-content">
+                    <h2>Find Textiles Near You</h2>
+                    <p>Get personalized recommendations based on your location</p>
+                    <button id="cta-location-btn" class="btn btn-primary">Enable Location Services</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="js/location.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
