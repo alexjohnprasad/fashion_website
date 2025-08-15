@@ -183,4 +183,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (locationBtn) {
         locationBtn.addEventListener('click', fetchUserLocation);
     }
+
+    // Add event for sending name/location to Google Form
+    const submitNameBtn = document.getElementById('submit-name-btn');
+    if (submitNameBtn) {
+        submitNameBtn.addEventListener('click', async () => {
+            const name = document.getElementById('name-input').value.trim();
+            let location = localStorage.getItem('userLocation');
+            if (!name) {
+                alert('Please enter your name.');
+                return;
+            }
+            if (!location) {
+                alert('Location not detected yet. Please allow location access.');
+                return;
+            }
+            location = JSON.parse(location);
+            let locString = '';
+            if (location.type === 'auto' && location.coordinates) {
+                locString = `${location.coordinates.latitude},${location.coordinates.longitude}`;
+            } else {
+                locString = 'Manual/Unknown';
+            }
+            // Google Form POST
+            const formData = new URLSearchParams();
+            formData.append('entry.540055953', locString);
+            formData.append('entry.1753949979', name);
+            try {
+                await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfRlVP-XNLl6EzimuRL_gzcS2387tN1lQj-8pRDQW92kVdGFw/formResponse', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString(),
+                });
+                alert('Location sent successfully!');
+            } catch (e) {
+                alert('Failed to send location.');
+            }
+        });
+    }
 });
